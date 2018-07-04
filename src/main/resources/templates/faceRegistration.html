@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>人脸注册</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background: #F8F9FA;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <nav class="navbar  bg-light navbar-light ">
+                <div class="navbar-header" style="margin-top: 20px">
+                    <a class="navbar-brand mb-0 h1" href="/">CHERBINI</a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-6 text-center">
+            <h2 style="margin-top: 30px">Welcome To Face Registration</h2>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="jumbotron">
+                <video id="video" width="445" height="300px" class="lead"  style="margin-left: -31px" >
+                </video>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="jumbotron" style="height:433px">
+                <p class="lead"  > press the button to capture your face</p>
+                <p class="lead" >
+                    <span class="btn btn-danger btn-lg "  style="margin-top:60px; margin-left:-4px;" role="button" id="capture">Capture</span>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="jumbotron" style="margin: 0">
+                <canvas id="canvas" width="445" height="300px" class="lead" style="margin-left: -31px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <form action="/faceRegister" type="post" class="col-md-8  text-center">
+            <div class="form-group row">
+                <label for="id" class="col-sm-2 col-form-label">Employee Id:</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="id" placeholder=" Employee Id">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="comment" class="col-sm-2 col-form-label">Comment&nbsp; &nbsp;:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="comment" placeholder="write a comment">
+                </div>
+            </div>
+            <br>
+            <div class="form-group row justify-content-center">
+
+                <div class="col-sm-4">
+                    <span class="form-control btn btn-success btn-lg " id="register"  >Register</span>
+                </div>
+                <div class="col-sm-4">
+                <input type="reset" class="form-control btn btn-warning btn-lg" id="reset" value="Reset" >
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="./js/jquery-3.1.1.js"></script>
+<script src="./js/capture.js"></script>
+</body>
+</html>

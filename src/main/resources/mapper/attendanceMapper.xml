@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cherbini.faceattendance.mapper.AttendanceMapper">
+    <resultMap id="attendanceDayMap" type="com.cherbini.faceattendance.model.Attendance">
+        <result property="etime" column="etime"/>
+        <result property="ltime" column="ltime"/>
+        <result property="ttime" column="ttime"/>
+        <result property="comment" column="comment"/>
+        <association property="user" select="selectById" column="id"/>
+    </resultMap>
+    <resultMap type="com.cherbini.faceattendance.model.User" id="UserMap">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"/>
+    </resultMap>
+    <select id="findAllAttendanceBydate" resultMap="attendanceDayMap">
+       SELECT etime,ltime,ttime,comment,id from attendance WHERE  day=#{0}
+    </select>
+    <select id="selectById" parameterType="int" resultMap="UserMap">
+        select id,name from user where id=#{id}
+    </select>
+</mapper>

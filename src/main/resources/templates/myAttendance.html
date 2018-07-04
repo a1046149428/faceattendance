@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>My Attendance</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="font/iconfont.css" >
+    <style>
+        body {
+            background: #F8F9FA;
+        }
+
+        td {
+            vertical-align: middle !important;
+        }
+        a{
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <nav class="navbar navbar-expand-sm bg-light navbar-light ">
+                <div class="navbar-header">
+                    <a class="navbar-brand mb-0 h1" href="/">CHERBINI</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class=" navbar-nav">&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item "><a class="nav-link" href="/">HOME</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item active"><a class="nav-link" href="/myAttendance">MY ATTENDANCE</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" href="#">TEAM</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" href="/admin">ADMIN</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <br>
+    <div class="row text-center">
+        <div class="col-md-5"></div>
+        <div class="col-md-3"><i class="iconfont icon-clock"></i><span id="clock"></span></div>
+        <div class="col-md-2"><i class="iconfont icon-user"></i><span id="user"></span></div>
+        <div class="col-md-2" id="logout">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><i
+                class="iconfont icon-tuichu"></i>logout</span></div>
+    </div>
+    <div class="row text-center">
+        <hr style="width: 97%; height:2px;border:none;border-top:2px solid #185598;"/>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <i class="iconfont icon-calendar"></i>
+            <span>Year/Month:&nbsp;</span>
+            <select id="year">
+            </select>
+             <select id="month">
+            </select>
+
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+        </div>
+        <div class="col-md-2">
+            <span class="btn btn-danger btn-sm" id="leave">User Leave</span>
+        </div>
+        <div class="col-md-2">
+            <span class="btn btn-warning btn-sm" id="refresh">Refresh Data</span>
+        </div>
+
+    </div>
+    <br>
+    <div class="row text-center text-vertical">
+        <div class="col-md">
+            <table class=" table table-bordered ">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Day</th>
+                    <th scope="col">Entry Time</th>
+                    <th scope="col">Exit Time</th>
+                    <th scope="col">Total Time</th>
+                    <th scope="col">TimeSheet Comment</th>
+
+                </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="js/time.js" ></script>
+<script type="text/javascript" src="js/timeMain.js" ></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cherbini.faceattendance.mapper.DeptMapper">
+
+    <resultMap id="deptsListMap" type="com.cherbini.faceattendance.model.Dept">
+        <id column="deptno" property="deptno"/>
+        <result column="dname" property="dname"/>
+        <result column="office" property="office"/>
+        <collection property="users"  column="deptno" ofType="com.cherbini.faceattendance.model.User" select="selectByDeptno"/>
+    </resultMap>
+    <resultMap id="userMap" type="com.cherbini.faceattendance.model.User">
+        <id property="id" column="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+    <select id="findDepts" parameterType="Dept" resultMap="deptsListMap">
+     SELECT deptno,dname,office FROM dept
+    </select>
+
+    <select id="selectByDeptno" parameterType="int" resultMap="userMap">
+        select id,name from user where deptno=#{deptno}
+    </select>
+</mapper>

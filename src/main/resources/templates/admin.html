@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人脸考勤</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/font/iconfont.css">
+    <style>
+        body {
+            background: #F8F9FA;
+        }
+
+        .row > div > div > a {
+            margin-bottom: 0.5rem;
+            color: #1b1e21;
+
+        }
+
+        .icon-kaoqin {
+            font-size: 1.5rem;
+        }
+
+        .icon-new {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row ">
+        <div class="col-md-12">
+
+            <nav class="navbar navbar-expand-sm bg-light navbar-light ">
+                <div class="navbar-header">
+                    <a class="navbar-brand mb-0 h1" href="/">CHERBINI</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class=" navbar-nav">&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item "><a class="nav-link" href="/">HOME</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" href="/myAttendance">MY ATTENDANCE</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" href="#">TEAM</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item  active"><a class="nav-link" href="/admin">ADMIN</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <br>
+    <div class="row text-center">
+        <div class="col-md-5"></div>
+        <div class="col-md-3"><i class="iconfont icon-clock"></i><span id="clock"></span></div>
+        <div class="col-md-2"><i class="iconfont icon-user"></i><span id="user"></span></div>
+        <div class="col-md-2" id="logout">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><i
+                class="iconfont icon-tuichu"></i>logout</span></div>
+    </div>
+    <div class="row text-center">
+        <hr style="width: 97%; height:2px;border:none;border-top:2px solid #185598;"/>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-2">
+            <div class="h4 text-center">Main Menu</div>
+            <br>
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                   aria-controls="v-pills-home" aria-selected="true">Staff Attendance</a>
+                <a class="nav-link" id="v-pills-profile-tab" onclick="fff()" data-toggle="pill" href="#v-pills-profile"
+                   role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">Employee Info</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                   aria-controls="v-pills-messages" aria-selected="false">Add Employees</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                   aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                     aria-labelledby="v-pills-home-tab">
+                    <div class="row" style="margin-top: 0.2rem">
+                        <div class="col-md " style="margin-left: 0.5rem">
+                            <div class="row">
+                                <div class="h5"><em class="iconfont icon-kaoqin"> </em>Attendance</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md">
+                                    <form class="form-inline ">
+                                        <i class="iconfont icon-calendar"></i>
+                                        <span>Year/Month/Day:&nbsp;</span>
+                                        <select name="year" id="year"
+                                                class="form-control form-control-sm">
+                                        </select>
+                                        <select name="" id="month" class="form-control form-control-sm"></select>
+                                        <select name="" id="day" class="form-control form-control-sm"></select>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input id="search" class="form-control  form-control-sm" type="search"
+                                               placeholder="Search" aria-label="Search">
+                                        <span class="btn btn-outline-success btn-sm ">Search</span>
+                                        &nbsp;&nbsp;
+                                        <select name="type" id="type" class="form-control form-control-sm">
+                                            <option value="1">ID</option>
+                                            <option value="2">name</option>
+                                        </select>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="btn btn-outline-info btn-sm"><em
+                                                class="iconfont icon-iconset0344"></em></span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="btn btn-outline-warning btn-sm"><em class="iconfont icon-xx"></em>&nbsp;&nbsp;Export</span>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row text-center text-vertical">
+                                <div class="col-md" style="margin-top: 0.5rem">
+
+                                    <table class=" table table-bordered table-striped  table-hover ">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col"><input type="checkbox"></th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Entry Time</th>
+                                            <th scope="col">Exit Time</th>
+                                            <th scope="col">Total Time</th>
+                                            <th scope="col">Comment</th>
+                                            <th scope="col">Operating</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody id="tbody" class="table-sm">
+                                        <tr>
+                                            <th scope="row"><input type="checkbox" value="1"></th>
+                                            <td>1</td>
+                                            <td>Otto</td>
+                                            <td>19:10</td>
+                                            <td>19:10</td>
+                                            <td>9h</td>
+                                            <td>miss</td>
+                                            <td>40h</td>
+                                            <td><span class="btn btn-danger btn-sm">Edit</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><input type="checkbox" value="1"></th>
+                                            <td>1</td>
+                                            <td>Otto</td>
+                                            <td>19:10</td>
+                                            <td>19:10</td>
+                                            <td>9h</td>
+                                            <td>miss</td>
+                                            <td>40h</td>
+                                            <td><span class="btn btn-danger btn-sm">Edit</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><input type="checkbox" value="1"></th>
+                                            <td>1</td>
+                                            <td>Otto</td>
+                                            <td>19:10</td>
+                                            <td>19:10</td>
+                                            <td>9h</td>
+                                            <td>miss</td>
+                                            <td>40h</td>
+                                            <td><span class="btn btn-danger btn-sm">Edit</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><input type="checkbox" value="1"></th>
+                                            <td>1</td>
+                                            <td>Otto</td>
+                                            <td>19:10</td>
+                                            <td>19:10</td>
+                                            <td>9h</td>
+                                            <td>miss</td>
+                                            <td>40h</td>
+                                            <td><span class="btn btn-danger btn-sm">Edit</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><input type="checkbox" value="1"></th>
+                                            <td>1</td>
+                                            <td>Otto</td>
+                                            <td>19:10</td>
+                                            <td>19:10</td>
+                                            <td>9h</td>
+                                            <td>miss</td>
+                                            <td>40h</td>
+                                            <td><span class="btn btn-danger btn-sm">Edit</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><input type="checkbox" value="1"></th>
+                                            <td>1</td>
+                                            <td>Otto</td>
+                                            <td>19:10</td>
+                                            <td>19:10</td>
+                                            <td>9h</td>
+                                            <td>miss</td>
+                                            <td>40h</td>
+                                            <td><span class="btn btn-danger btn-sm">Edit </span></td>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <span class="btn btn-sm btn-success float-md-left">Edit All</span>
+                                    <div id="pageDiv" class="text-right">
+                                        <ul class="pagination pagination-sm" id="pageControl">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                     aria-labelledby="v-pills-profile-tab">
+                    <div class="row" style="margin-top: 0.2rem">
+                        <div class="col-md " style="margin-left: 0.5rem">
+                            <div class="row">
+                                <div class="h5"><em class="iconfont icon-kaoqin"> </em>Employee Info</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-8">
+                                    <form class="form-inline ">
+
+
+                                        <input id="search1" class="form-control  form-control-sm" type="search"
+                                               placeholder="Search" aria-label="Search">
+                                        <span class="btn btn-outline-success btn-sm ">Search</span>
+                                        &nbsp;&nbsp;
+                                        <select name="type" id="type2" class="form-control form-control-sm">
+                                            <option value="1">ID</option>
+                                            <option value="2">name</option>
+                                        </select>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="btn btn-outline-info btn-sm"><em
+                                                class="iconfont icon-iconset0344"></em></span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="btn btn-outline-warning btn-sm"><em class="iconfont icon-xx"></em>&nbsp;&nbsp;Export</span>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row text-center text-vertical">
+                                <div class="col-md" style="margin-top: 0.5rem">
+
+                                    <table class=" table table-bordered table-striped  table-hover ">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col"><input type="checkbox"></th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Sex</th>
+                                            <th scope="col">Department</th>
+                                            <th scope="col">Power</th>
+                                            <th scope="col">Pic</th>
+                                            <th scope="col">Operating</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="etbody">
+                                        <tr>
+                                            <td><input type='checkbox'></td>
+                                            <td>1</td>
+                                            <td>Otto</td>
+                                            <td>man</td>
+                                            <td>HR</td>
+                                            <td>Admin</td>
+                                            <td>test1</td>
+                                            <td><span class='btn btn-warning btn-sm' data-toggle='modal'
+                                                      data-target='#exampleModalCenter'>Edit </span><span
+                                                    class='btn btn-danger btn-sm'>Delete </span></td>
+                                        </tr>
+                                        </tbody>
+
+
+                                    </table>
+                                    <span class="btn btn-sm btn-success float-md-left">Edit All</span>
+                                    <div id="pageDiv1" class="text-right">
+                                        <ul class="pagination pagination-sm" id="pageControl1">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                     aria-labelledby="v-pills-messages-tab">
+                    <div class="row" style="margin-top: 0.2rem">
+                        <div class="col-md " style="margin-left: 0.5rem">
+                            <div class="row">
+                                <div class="h5"><em class="iconfont icon-new"> </em>Add Employee</div>
+                            </div>
+                            <div class="row ">
+                                <br>
+                                <div class="col-md-12">
+                                    <form action="/addUser" method="get">
+                                        <div class="form-group row">
+                                            <label for="name" class="col-sm-2 col-form-label">Name:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                       placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="password" class="col-sm-2 col-form-label">Password:</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="password"
+                                                       name="password"
+                                                       placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <fieldset class="form-group">
+                                            <div class="row">
+                                                <legend class="col-form-label col-sm-2 pt-0">Sex:</legend>
+                                                <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="sex" id="man"
+                                                               value="man" checked>
+                                                        <label class="form-check-label" for="man">
+                                                            Man
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="sex"
+                                                               id="woman" value="woman">
+                                                        <label class="form-check-label" for="woman">
+                                                            Woman
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <div class="form-group row">
+                                            <label for="power" class="col-sm-2 col-form-label">Role:</label>
+                                            <div class="col-sm-10">
+                                                <select name="power" class="form-control" id="power">
+                                                    <option value="1">Admin</option>
+                                                    <option value="0">Normal</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="deptno" class="col-sm-2 col-form-label">Department:</label>
+                                            <div class="col-sm-10">
+                                                <select name="dept.deptno" class="form-control" id="deptno">
+                                                    <option value="1">Human Resources</option>
+                                                </select>
+                                                <!--<input type="text" class="form-control" id="deptno" name="dept.deptno"
+                                                       placeholder="Department">-->
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                                <button type="submit" class="btn btn-success">Sign in</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                     aria-labelledby="v-pills-settings-tab">
+                    4
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="exampleModalLongTitle">Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="id1">i&nbsp;&nbsp;d：</label><input id="id1" type="text" disabled>
+                        <label for="name1">name：</label><input id="name1" type="text">
+                        <label for="sex1">sex：</label><input id="sex1" type="text" disabled>
+                        <label for="power1">power:</label>
+                        <select id="power1">
+                            <option value="1">Normal</option>
+                            <option value="0">Admin</option>
+                        </select>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span id="submit" class="btn btn-success">submit</span>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="./js/jquery-3.1.1.js"></script>
+<script src="./js/admin.js"></script>
+<script src="./js/adminMain.js"></script>
+<!--<script src="./js/atten_list.js"></script>-->
+</body>
+</html>
